@@ -90,7 +90,7 @@ async def right_answer(callback: types.CallbackQuery):
     score = await get_score_update(callback.from_user.id)
 
     # Отправляем в чат сообщение, что ответ верный
-    await callback.message.answer(f"Ваш ответ: {F.data}")
+    await callback.message.answer(f"Верно!")
 
     score += 1
     # Обновление номера текущего вопроса в базе данных
@@ -121,7 +121,7 @@ async def wrong_answer(callback: types.CallbackQuery):
     correct_option = quiz_data[current_question_index]['correct_option']
     score = await get_score_update(callback.from_user.id)
     # Отправляем в чат сообщение об ошибке с указанием верного ответа
-    await callback.message.answer(f"Правильный ответ: {quiz_data[current_question_index]['options'][correct_option]}")
+    await callback.message.answer(f"Не верно")
 
     # Обновление номера текущего вопроса в базе данных
     current_question_index += 1
